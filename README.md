@@ -2,6 +2,8 @@
 
 ***all code is made by cosmic-perott for DeveloperWeek NYC 2026 (name.com track)***
 
+## YOUTUBE VIDEO: https://www.youtube.com/watch?v=MGijtNg8VSw
+
 ## Inspiration
 Most web design portfolios are rigid, pristine, and frankly, a bit boring. When we looked at the domain panic.design, we didn’t just see a name—we saw a challenge. What if a beautifully structured, elegant newspaper layout was secretly terrified of physics? We decided to create a literal interpretation of the domain: an arcade-style, high-stress asset management simulation where a pristine digital layout physically panics, unravels, and collapses under the weight of leaking system gravity.
 
