@@ -76,7 +76,6 @@
         });
         Composite.add(world, mouseConstraint);
 
-        // --- ALL-TIME DRAG ENGINE ---
         Matter.Events.on(mouseConstraint, 'startdrag', function(event) {
             if (!isGameRunning) {
                 mouseConstraint.constraint.body = null;
@@ -109,7 +108,6 @@
             if (element) { element.dom.classList.remove('is-dragging'); }
         });
 
-        // --- PHYSICAL COLLISION DETECTOR (SHAKE ON IMPACT) ---
         Events.on(engine, 'collisionStart', function(event) {
             if (!isGameRunning) return;
 
@@ -143,7 +141,6 @@
             }, 220);
         }
 
-        // --- ACCURACY METRICS ---
         function calculateLayoutAccuracy() {
             let totalDeviation = 0;
             let maxAllowableDeviationPerElement = 350; 
@@ -179,7 +176,6 @@
             }
         }
 
-        // --- GAMEFLOW CONTROL RIG ---
         function startGame() {
             document.getElementById('start-screen').style.display = 'none';
             isGameRunning = true;
@@ -194,15 +190,12 @@
                 const ms = Math.floor((elapsed % 1) * 10).toString();
                 document.getElementById('game-timer').innerText = `${mins}:${secs}.${ms}`;
 
-                // --- POST 30-SECOND DIFFICULTY SCALING CURVE ---
                 if (elapsed >= 30) {
                     const panicDuration = elapsed - 30;
 
-                    // 1. Linearly scale gravity higher every single second
                     dynamicGravityValue = 4.5 + (panicDuration * 0.18); 
-                    engine.gravity.y = Math.min(12, dynamicGravityValue); // Clamp max acceleration load
+                    engine.gravity.y = Math.min(12, dynamicGravityValue); 
 
-                    // 2. Scale continuous tectonic screen rumble severity parameters
                     const rumbleX = Math.min(3.5, 0.6 + (panicDuration * 0.08));
                     const rumbleY = Math.min(3.5, 0.6 + (panicDuration * 0.08));
                     const rumbleR = Math.min(0.15, 0.03 + (panicDuration * 0.004));
@@ -210,7 +203,6 @@
                     viewportContainer.style.setProperty('--rumble-y', `${rumbleY}px`);
                     viewportContainer.style.setProperty('--rumble-r', `${rumbleR}deg`);
 
-                    // 3. UI Aesthetics shifts
                     if (!document.body.classList.contains('stage-panic')) {
                         document.body.classList.add('stage-panic');
                         document.getElementById('game-timer').classList.add('panic-timer');
@@ -276,7 +268,6 @@
             startGame();
         }
 
-        // --- CONTINUOUS TIMED COLLAPSE ROUTINE ---
         function triggerRandomLayoutCollapse() {
             if (!isGameRunning) return;
 
@@ -284,7 +275,6 @@
             const elapsed = (Date.now() - startTime) / 1000;
             
             if (staticElements.length > 0) {
-                // Ramps cluster size calculations from 3 max to 5 max based on time elapsed past 30 seconds
                 const maxCluster = elapsed >= 30 ? Math.min(5, 3 + Math.floor((elapsed - 30) / 15)) : 3;
                 const clusterSize = Math.floor(Math.random() * maxCluster) + 1;
                 
@@ -315,14 +305,12 @@
                 }
             }
 
-            // Linearly shrink drop intervals after 30 seconds to push rapid fires
             const panicMod = elapsed >= 30 ? (elapsed - 30) * 80 : 0;
             const baseFrequency = Math.max(700, 4500 - (elapsed * 50) - panicMod); 
 
             dropTimeout = setTimeout(triggerRandomLayoutCollapse, Math.random() * 1200 + baseFrequency);
         }
 
-        // --- REFRESH FRAME MATRIX ---
         (function update() {
             for (let i = 0; i < 2; i++) {
                 Engine.update(engine, (1000 / 60) / 2);
@@ -338,7 +326,6 @@
             requestAnimationFrame(update);
         })();
 
-        // Right click pinning implementation
         window.addEventListener('contextmenu', function(e) {
             e.preventDefault();
             if (!isGameRunning) return;
