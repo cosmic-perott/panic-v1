@@ -15,6 +15,38 @@
             width: 100vw;
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             color: #1c1917;
+            transition: background-color 1.5s ease;
+        }
+
+        body.stage-panic {
+            background-color: #fef2f2;
+        }
+
+        #game-viewport-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            transform: translate3d(0, 0, 0);
+        }
+
+        .impact-shake {
+            animation: sudden-quake 0.22s cubic-bezier(.36,.07,.19,.97) both;
+        }
+
+        .continuous-rumble {
+            animation: constant-stress 0.12s infinite alternate linear;
+        }
+
+        @keyframes sudden-quake {
+            10%, 90% { transform: translate3d(-3px, 3px, 0); }
+            20%, 80% { transform: translate3d(4px, -3px, 0); }
+            30%, 50%, 70% { transform: translate3d(-5px, 4px, 0); }
+            40%, 60% { transform: translate3d(5px, -1px, 0); }
+        }
+
+        @keyframes constant-stress {
+            0% { transform: translate3d(var(--rumble-x, 0.6px), var(--rumble-y, 0.6px), 0) rotate(var(--rumble-r, 0.03deg)); }
+            100% { transform: translate3d(calc(-1 * var(--rumble-x, 0.6px)), calc(-1 * var(--rumble-y, 0.6px)), 0) rotate(calc(-1 * var(--rumble-r, 0.03deg))); }
         }
 
         #hud-container {
@@ -87,6 +119,11 @@
             border-radius: 6px;
             letter-spacing: 0.5px;
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+            transition: background-color 0.5s ease;
+        }
+
+        .live-timer.panic-timer {
+            background-color: #dc2626;
         }
 
         .game-overlay {
@@ -115,7 +152,7 @@
             max-width: 480px;
             width: 90%;
             text-align: center;
-            border-top: 6px solid #2563eb;
+            border-top: 6px solid #1c1917;
         }
 
         .menu-card h2 {
@@ -148,9 +185,9 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         .action-btn:hover { 
-            background: #2563eb; 
+            background: #dc2626; 
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
         }
         .action-btn:active { transform: translateY(0); }
 
@@ -196,11 +233,10 @@
             cursor: grab;
         }
 
-        /* Visual response when dragging an item */
         .physics-ui.is-dragging {
             cursor: grabbing;
             box-shadow: 0 25px 35px -10px rgba(28, 25, 23, 0.15), 0 10px 20px -5px rgba(28, 25, 23, 0.1);
-            border-color: #2563eb !important;
+            border-color: #dc2626 !important;
         }
 
         .danger-flash {
@@ -215,7 +251,6 @@
             100% { background-color: #fef2f2; }
         }
 
-        /* --- CARD TYPOGRAPHY & DESIGN GRID --- */
         .scrollable-content { overflow-y: auto; height: 100%; pointer-events: auto; padding-right: 4px; }
         .scrollable-content::-webkit-scrollbar { width: 4px; }
         .scrollable-content::-webkit-scrollbar-thumb { background: #e7e5e4; border-radius: 2px; }
@@ -225,6 +260,7 @@
             font-size: 32px; 
             font-weight: 700; 
             color: #1c1917; 
+            letter-spacing: -0.5px;
         }
         
         h2.card-title { 
@@ -236,13 +272,7 @@
             line-height: 1.3;
         }
         
-        p.card-body { 
-            font-size: 13.5px; 
-            line-height: 1.6; 
-            color: #44403c; 
-            margin-bottom: 10px;
-        }
-
+        p.card-body { font-size: 13.5px; line-height: 1.6; color: #44403c; margin-bottom: 10px; }
         .image-placeholder {
             background-color: #f5f5f4; 
             border: 1px dashed #d6d3d1;
@@ -260,67 +290,11 @@
         }
 
         .header-btn-container { display: flex; gap: 8px; margin-left: auto; }
-        
-        .modern-btn { 
-            background: #1c1917; 
-            color: #ffffff; 
-            border: none; 
-            padding: 10px 20px; 
-            font-size: 12px; 
-            font-weight: 700; 
-            border-radius: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: background 0.2s ease;
-        }
-        .modern-btn:hover { background: #2563eb; }
-
-        .article-headline-btn { 
-            display: block; 
-            width: 100%; 
-            height: 100%; 
-            text-align: left; 
-            background: none; 
-            border: none; 
-            cursor: pointer;
-        }
-        
-        .article-headline-btn .badge { 
-            display: inline-block; 
-            font-size: 10px; 
-            font-weight: 800; 
-            padding: 3px 8px; 
-            background: #fee2e2; 
-            color: #ef4444; 
-            border-radius: 4px; 
-            margin-bottom: 8px; 
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .article-headline-btn h4 { 
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 15.5px; 
-            font-weight: 700; 
-            color: #1c1917; 
-            margin-bottom: 6px; 
-            line-height: 1.3;
-        }
-        
-        .article-headline-btn p { 
-            font-size: 12px; 
-            color: #57534e; 
-            line-height: 1.5;
-        }
-        
+        .modern-btn { background: #1c1917; color: #ffffff; border: none; padding: 10px 20px; font-size: 12px; font-weight: 700; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .article-headline-btn { display: block; width: 100%; height: 100%; text-align: left; background: none; border: none; }
+        .article-headline-btn .badge { display: inline-block; font-size: 10px; font-weight: 800; padding: 3px 8px; background: #fee2e2; color: #ef4444; border-radius: 4px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .article-headline-btn h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 15.5px; font-weight: 700; color: #1c1917; margin-bottom: 6px; line-height: 1.3; }
+        .article-headline-btn p { font-size: 12px; color: #57534e; line-height: 1.5; }
         .static-ad-box { height: 100%; display: flex; flex-direction: column; }
-        
-        .ad-tag { 
-            font-size: 9px; 
-            font-weight: 800; 
-            color: #b45309; 
-            text-transform: uppercase; 
-            margin-bottom: 6px; 
-            letter-spacing: 1px;
-        }
+        .ad-tag { font-size: 9px; font-weight: 800; color: #b45309; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 1px; }
     
