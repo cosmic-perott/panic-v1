@@ -5,27 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Daily Panic - Layout Integrity Simulation</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
-  <style src="style.css"></style>
-  <script src="script.js"></script>
 </head>
 <body>
 
     <div id="start-screen" class="game-overlay">
         <div class="menu-card">
             <h2>The Daily Panic</h2>
-            <p>Gravity structural failures are unanchoring this publication's digital layout grid! Drag items cleanly back into position. If layout structural density falls below 30%, the mainframe will go entirely offline.</p>
-            <button class="action-btn" onclick="startGame()">Initialize Simulation</button>
+            <p>Gravity structural dynamics are pulling this layout file apart! Drag items back into position before layout density falls past critical safety thresholds.</p>
+            <button class="action-btn" onclick="startGame()">Initialize Matrix</button>
         </div>
     </div>
 
     <div id="game-over-screen" class="game-overlay" style="display: none;">
         <div class="menu-card" style="border-top-color: #ef4444;">
-            <h2 style="color: #ef4444;">Layout Structural Collapse</h2>
-            <p>The newspaper layout integrity has fragmented beyond critical safety tolerances.</p>
-            <div class="score-display">Matrix Survived: <span id="final-time">0.0</span>s</div>
-            <div id="record-badge" class="record-badge" style="display: none;">New Server Record!</div>
-            <div style="font-size: 14px; font-weight: 600; color: #78716c; margin-bottom: 28px;">All-Time Record: <span id="best-time">0.0</span>s</div>
-            <button class="action-btn" style="background: #1c1917;" onclick="restartGame()">Reinitialize Grid</button>
+            <h2 style="color: #ef4444;">Structural Collapse</h2>
+            <p>The layout asset file was completely broken by structural gravity drift.</p>
+            <div class="score-display">Survived: <span id="final-time">0.0</span>s</div>
+            <div id="record-badge" class="record-badge" style="display: none;">New Record Established!</div>
+            <div style="font-size: 14px; font-weight: 600; color: #78716c; margin-bottom: 28px;">All-Time High Record: <span id="best-time">0.0</span>s</div>
+            <button class="action-btn" style="background: #1c1917;" onclick="restartGame()">Re-Initialize Engine</button>
         </div>
     </div>
 
@@ -43,6 +41,10 @@
         </div>
     </div>
 
-    <div id="newspaper-grid-canvas" style="margin-top: 40px;"></div>
+    <div id="game-viewport-container">
+        <div id="newspaper-grid-canvas" style="margin-top: 40px; position: relative;"></div>
+    </div>
+
+
 </body>
 </html>
