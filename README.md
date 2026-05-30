@@ -1,7 +1,7 @@
 # panic-v1
 
 ***all code is made by cosmic-perott for DeveloperWeek NYC 2026 (name.com track)***
-
+<img width="423" height="65" alt="Screenshot 2026-05-30 at 8 35 46 PM" src="https://github.com/user-attachments/assets/d300dfc8-c170-4dcd-b93a-8871da002211" />
 ### YOUTUBE VIDEO: https://www.youtube.com/watch?v=MGijtNg8VSw
 
 ## Inspiration
