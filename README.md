@@ -1,7 +1,13 @@
 # panic-v1
 
+![](https://img.shields.io/badge/MATTER.JS-4B5563?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+![](https://img.shields.io/badge/RENDER-46E3B7?style=for-the-badge&logo=render&logoColor=black)
+![](https://img.shields.io/badge/JAVASCRIPT-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+
 ***all code is made by cosmic-perott for DeveloperWeek NYC 2026 (name.com track)***
-<img width="423" height="65" alt="Screenshot 2026-05-30 at 8 35 46 PM" src="https://github.com/user-attachments/assets/d300dfc8-c170-4dcd-b93a-8871da002211" />
+
 ### YOUTUBE VIDEO: https://www.youtube.com/watch?v=MGijtNg8VSw
 
 ## Inspiration
